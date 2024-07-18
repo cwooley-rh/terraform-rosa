@@ -1,0 +1,11 @@
+---
+
+- name: Install RHOAI Pre Req Operators
+  include_tasks: "{{ item }}"
+  with_items: 
+    - cluster-login.yaml
+    - install-other-operators.yaml
+    - nvidia-gpu-operator.yaml
+    - nfd-operator.yaml
+
+

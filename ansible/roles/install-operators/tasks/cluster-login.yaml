@@ -1,0 +1,33 @@
+--- 
+
+- name: Get Cluster API URL
+  rh_mobb.rosa.ocm_cluster_info:
+    name: cwooley-test
+  register: cluster_info
+
+- name: Debug cluster_info
+  debug:
+    var: cluster_info
+
+- name: Set fact for OpenShift API URL
+  set_fact:
+    openshift_api_url: "{{ cluster_info.cluster.api.url }}"
+
+- name: Retrieve OpenShift admin password from environment
+  set_fact:
+    bitwarden_password: "{{ lookup('env', 'BW_PASSWORD') }}"
+
+- debug:
+    msg: "{{ bitwarden_password }}"
+
+- name: Login to OpenShift
+  community.okd.openshift_auth:
+    password: "{{ bitwarden_password }}"
+    username: admin
+    host: "{{ openshift_api_url }}"
+    validate_certs: false
+  register: auth_results
+
+- name: Display auth_results
+  debug:
+    var: auth_results

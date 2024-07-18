@@ -1,0 +1,3 @@
+--- 
+
+bitwarden_password: "{{ lookup('community.general.bitwarden', 'admin', field='password') }}"

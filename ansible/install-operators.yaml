@@ -1,0 +1,14 @@
+---
+
+- name: Install OpenShift Operators for RHOAI
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  collections:
+  - kubernetes.core
+  - community.general
+  - rh_mobb.rosa
+
+  roles:
+    - roles/install-operators
