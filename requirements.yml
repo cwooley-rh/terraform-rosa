@@ -7,3 +7,4 @@ collections:
   - name: community.okd
   - name: ansible.utils
   - name: bitwarden.secrets
+  - name: community.kubernetes

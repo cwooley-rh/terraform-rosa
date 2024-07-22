@@ -1,0 +1,47 @@
+---
+
+
+- name: Create Subscription for OpenShift AI Operator
+  k8s:
+    definition:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: Subscription
+      metadata:
+        name: rhods-operator
+        namespace: redhat-ods-operator
+      spec:
+        channel: stable-2.10
+        installPlanApproval: Automatic
+        name: rhods-operator
+        source: redhat-operators
+        sourceNamespace: openshift-marketplace
+
+- name: Create Data Science Cluster
+  k8s:
+    definition:
+      apiVersion: datasciencecluster.opendatahub.io/v1
+      kind: DataScienceCluster
+      metadata:
+        name: default-data-science-cluster
+        labels:
+          app.kubernetes.io/created-by: openshift-ai
+          app.kubernetes.io/instance: default-data-science-cluster
+          app.kubernetes.io/managed-by: kustomize
+          app.kubernetes.io/name: datascience-cluster
+          app.kubernetes.io/part-of: openshift-ai
+      spec:
+        components:
+          codeflare:
+            managementState: Managed
+          dashboard:
+            managementState: Managed
+          datasciencepipelines:
+            managementState: Managed
+          kserve:
+            managementState: Managed
+          modelmesh:
+            managementState: Managed
+          ray:
+            managementState: Managed
+          workbenches:
+            managementState: Managed  
