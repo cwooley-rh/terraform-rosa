@@ -41,3 +41,8 @@ output "cluster_api_url" {
 output "cluster_console_url" {
   value = local.cluster_console_url
 }
+
+output "s3_bucket_name" {
+  description = "The name of the created S3 bucket"
+  value       = aws_s3_bucket.model-store.id
+}

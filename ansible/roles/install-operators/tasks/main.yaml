@@ -10,3 +10,24 @@
     - install-rhoai
 
 
+# may look at ACK to install the s3 storage 
+# To do
+# need to  
+# create a DS project 
+# create a Workbench in RHOAI
+  # name
+  # notebook image
+    # CUDA  - 2024.1
+  # Deployment Size
+    # container size - Large
+# --- this is done after workbench is stood up bc I need to patch the workbench SA with the annotation to access s3
+
+  # Data Connections
+    # create new 
+      # Name
+      # access key
+      # secret key 
+      # Endpoint
+      # Region
+      # Bucket
+

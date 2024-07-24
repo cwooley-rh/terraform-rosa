@@ -102,3 +102,7 @@ variable "compute_machine_type" {
   default     = "m5.xlarge"
 }
 
+variable "model_bucket_name" {
+  type = string 
+  default =  "my-model-bucket"
+}
