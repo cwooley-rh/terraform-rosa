@@ -1,0 +1,33 @@
+---
+
+- name: Install OpenShift Pipelines Operator
+  k8s:
+    state: present
+    definition:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: Subscription
+      metadata:
+        name: openshift-pipelines-operator
+        namespace: openshift-operators
+      spec:
+        channel: latest
+        name: openshift-pipelines-operator-rh
+        source: redhat-operators
+        sourceNamespace: openshift-marketplace
+
+- name: Wait for OpenShift Pipelines Operator to be ready
+  kubernetes:
+    api_version: operators.coreos.com/v1alpha1
+    kind: ClusterServiceVersion
+    name: openshift-pipelines-operator-rh
+    namespace: openshift-operators
+  register: csv_status
+  until: csv_status.result.status.phase == "Succeeded"
+  retries: 10
+  delay: 30
+
+- name: Verify OpenShift Pipelines installation
+  command: oc get tektonconfig config
+  register: tektonconfig_result
+  changed_when: false
+  failed_when: tektonconfig_result.rc != 0

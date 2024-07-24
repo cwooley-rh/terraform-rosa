@@ -102,6 +102,12 @@ variable "compute_machine_type" {
   default     = "m5.xlarge"
 }
 
+variable "secondar_machine_type" {
+  description = "ability to define a second machine pool"
+  type = string 
+  default = "m5.xlarge"
+}
+
 variable "model_bucket_name" {
   type = string 
   default =  "my-model-bucket"
