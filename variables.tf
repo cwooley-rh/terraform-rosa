@@ -106,3 +106,9 @@ variable "model_bucket_name" {
   type = string 
   default =  "my-model-bucket"
 }
+
+variable "secondary_pool_name" {}
+variable "secondary_machine_type" {}
+variable "secondary_replicas" {}
+variable "secondary_labels" { type = map(string) }
+variable "secondary_taints" { type = map(string) }
