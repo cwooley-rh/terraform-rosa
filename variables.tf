@@ -102,8 +102,8 @@ variable "compute_machine_type" {
   default     = "m5.xlarge"
 }
 
-variable "secondar_machine_type" {
-  description = "ability to define a second machine pool"
+variable "secondary_machine_type" {
+  description = "Ability to define a second machine pool"
   type = string 
   default = "m5.xlarge"
 }

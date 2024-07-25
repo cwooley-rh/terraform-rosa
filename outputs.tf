@@ -27,19 +27,19 @@ output "private_route_table_ids" {
 }
 
 output "oidc_config_id" {
-  value = local.cluster_oidc_config_id
+  value = module.rosa_cluster.cluster_oidc_config_id
 }
 
 output "oidc_endpoint_url" {
-  value = local.cluster_oidc_endpoint_url
+  value = module.rosa_cluster.cluster_oidc_endpoint_url
 }
 
 output "cluster_api_url" {
-  value = local.cluster_api_url
+  value = module.rosa_cluster.cluster_api_url
 }
 
 output "cluster_console_url" {
-  value = local.cluster_console_url
+  value = module.rosa_cluster.cluster_console_url
 }
 
 output "s3_bucket_name" {
