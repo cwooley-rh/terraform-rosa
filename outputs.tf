@@ -41,3 +41,10 @@ output "cluster_api_url" {
 output "cluster_console_url" {
   value = local.cluster_console_url
 }
+
+#S3 outputs
+
+output "bucket_ids" {
+  value = { for k, v in aws_aws_s3_bucket.multiple_buckets : k => v.id}
+  description = "The IDs of the S3 buckets"
+}

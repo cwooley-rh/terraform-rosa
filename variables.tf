@@ -152,3 +152,30 @@ variable "compute_machine_type" {
   type        = string
   default     = "m5.xlarge"
 }
+
+variable "secondary_machinepool_type" {
+  type = string 
+  default = "m5.xlarge"
+}
+
+variable "secondary_machinepool_name" {
+  type = string 
+  default = "workbench-mp"
+}
+
+# S3 Vars
+
+variable "bucket_names" {
+  type = set(string)
+  default = ["cwooley-bucket1", "cwooley_bucket2"]
+}
+
+variable "bucket1_name" {
+  type = string 
+  default = "cwooley-bucket1"
+}
+
+variable "bucket2_name" {
+  type = string 
+  default = "cwooley-bucket2"
+}
